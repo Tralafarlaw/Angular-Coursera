@@ -1,0 +1,16 @@
+
+	<form>
+  <div class="form-group">
+    <label for="nombre">Nombre</label>
+    <input type="text" class="form-control" id="nombre" aria-describedby="Nombre" #nombre>
+  </div>
+  <div class="form-group">
+    <label for="ulrimg">Photo URL</label>
+    <input type="url" class="form-control" id="urlimg" placeholder="Photo URL" #urlimg>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="guardar(nombre.value, urlimg.value)" >Guardar!</button>
+</form>
+<div class="row flex-row">
+<app-destino *ngFor="let x of destinos" [destinos]= "x"></app-destino>
+</div>
+
