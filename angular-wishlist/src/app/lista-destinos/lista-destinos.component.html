@@ -11,6 +11,10 @@
   <button type="submit" class="btn btn-primary" (click)="guardar(nombre.value, urlimg.value)" >Guardar!</button>
 </form>
 <div class="row flex-row">
-<app-destino *ngFor="let x of destinos" [destinos]= "x"></app-destino>
+<app-destino
+  *ngFor="let x of destinos"
+  [destinos]= "x"
+  (clicked)="elegido($event)"
+></app-destino>
 </div>
 
