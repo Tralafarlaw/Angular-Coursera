@@ -2,13 +2,26 @@
   <img src="https://placeimg.com/380/230/nature" class="card-img-top" alt="">
   <div class="card-body">
     <h5 class="card-title"> {{ destinos.nombre }} </h5>
-    <p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <a href="#" class="btn btn-primary" (click)="ir()">{{destinos.imgURL}}</a>
-    <span [style.display]="destinos.isSelected() ? '': 'none'">- Preferido -</span>
+    <div class="card-text">
+      <p>Servicios</p>
+      <ul>
+        <li *ngFor="let s of destinos.servicios">
+          <span [ngSwitch]="s">
+            <i *ngSwitchCase="'desayuno'" style="color: red">{{s}}</i>
+            <i *ngSwitchDefault>{{s}}</i>
+          </span>
+        </li>
+      </ul>
+    </div>
+    <div class="row flex-row">
+      <a href="#" (click)="voteUp()" class="col-md-4"><i class="material-icons md-18">thumb_up</i> </a>
+      <a href="#" (click)="voteDown()" class="col-md-4"><i class="material-icons md-18">thumb_down</i> </a>
+      <p class="col-md-4">{{destinos.votes}}</p>
+    </div>
+    <a href="#" class="btn btn-primary" (click)="ir()">Fevorito</a>
+    <span *ngIf="destinos.isSelected()">
+      <span ngNonBindable>{{PREFERIDO}}</span>
+    </span>
+    <a [routerLink]="['/destino']">Ver Detalle</a>
   </div>
 </div>
